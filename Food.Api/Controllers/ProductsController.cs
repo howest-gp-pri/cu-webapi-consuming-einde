@@ -79,7 +79,7 @@ namespace Food.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(ProductRequestDto productDto)
         {
-            if (await _categoryService.DoesCategoryIdExistsAsync(productDto.CategoryId))
+            if (await _categoryService.DoesCategoryIdExistsAsync(productDto.CategoryId) == false)
             {
                 return BadRequest($"Cannot add new product because category with id {productDto.CategoryId} does not exists");
             }
